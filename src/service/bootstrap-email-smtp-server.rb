@@ -25,23 +25,33 @@ STDOUT = $stdout
 class BootstrapSmtpServer < MidiSmtpServer::Smtpd
 
   # get each message after DATA <message> .
-    def on_message_data_event(ctx)
-    # Output for debug
-    logger.debug("mail reveived at: [#{ctx[:server][:local_ip]}:#{ctx[:server][:local_port]}] from: [#{ctx[:envelope][:from]}] for recipient(s): [#{ctx[:envelope][:to]}]...")
+  def on_message_data_event(ctx)
+    logger.info("mail reveived at: [#{ctx[:server][:local_ip]}:#{ctx[:server][:local_port]}] from: [#{ctx[:envelope][:from]}] for recipient(s): [#{ctx[:envelope][:to]}]...")
 
     # Just decode message ones to make sure, that this message is usable
     mail = Mail.read_from_string(ctx[:message][:data])
+    # logger.debug(ctx[:message][:data])
 
-    # If mail has a body
-    if mail.decoded
-      # Ensure proper content type header
-      mail.header['Content-Type'] = 'text/html; charset=UTF-8'
-      mail.body =  BootstrapEmail::Compiler.new(mail.decoded).perform_full_compile
-    end
+    compile_bootstrap(mail)
     mail.deliver
 
-    # handle incoming mail, just show the message source
     logger.debug('message was pushed to smtp')
+  end
+
+  def compile_bootstrap(part)
+    logger.debug("part is multipart? #{part.multipart?}")
+    logger.debug("part is content_type? #{part.content_type}")
+    if part.multipart?
+      part.parts.each do |a_part|
+        compile_bootstrap(a_part)
+      end
+    else
+      if part.content_type.start_with?('text/html')
+        logger.debug('processing compilation')
+        part.content_type = 'text/html; charset=utf-8'
+        part.body = BootstrapEmail::Compiler.new(part.decoded).perform_full_compile
+      end
+    end
   end
 
   # event when beginning with message DATA
