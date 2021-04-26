@@ -14,7 +14,10 @@ Mail.defaults do
   user_name: ENV['BOOTSTRAP_EMAIL_RELAY_USERNAME'].to_s.empty? ? nil : ENV['BOOTSTRAP_EMAIL_RELAY_USERNAME'].to_s,
   password: ENV['BOOTSTRAP_EMAIL_RELAY_PASSWORD'].to_s.empty? ? nil : ENV['BOOTSTRAP_EMAIL_RELAY_PASSWORD'].to_s,
   ssl: ENV['BOOTSTRAP_EMAIL_RELAY_SSL'].to_s.empty? ? false : ENV['BOOTSTRAP_EMAIL_RELAY_SSL'].to_s.downcase == "true",
-  tls: ENV['BOOTSTRAP_EMAIL_RELAY_TLS'].to_s.empty? ? false : ENV['BOOTSTRAP_EMAIL_RELAY_TLS'].to_s.downcase == "true"
+  tls: ENV['BOOTSTRAP_EMAIL_RELAY_TLS'].to_s.empty? ? false : ENV['BOOTSTRAP_EMAIL_RELAY_TLS'].to_s.downcase == "true",
+  enable_starttls: ENV['BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS'].to_s.empty? ? false : ENV['BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS'].to_s.downcase == "true",
+  enable_starttls_auto: ENV['BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS_AUTO'].to_s.empty? ? true : ENV['BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS_AUTO'].to_s.downcase == "true",
+  openssl_verify_mode: ENV['BOOTSTRAP_EMAIL_RELAY_OPENSSL_VERIFY_MODE'].to_s.empty? ? "none" : ENV['BOOTSTRAP_EMAIL_RELAY_OPENSSL_VERIFY_MODE']
 end
 
 # Permit logging to stdout in Docker containers

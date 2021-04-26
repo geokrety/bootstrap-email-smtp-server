@@ -33,9 +33,23 @@ The relay host password.
 
 Set to true if relay host require `STARTTLS`.
 
-##### BOOTSTRAP_EMAIL_RELAY_SSL=""
+##### BOOTSTRAP_EMAIL_RELAY_SSL="false"
 
 Set to true if relay host require `SSL`.
+
+##### BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS="false"
+
+
+##### BOOTSTRAP_EMAIL_RELAY_ENABLE_STARTTLS_AUTO="false"
+
+
+##### BOOTSTRAP_EMAIL_RELAY_OPENSSL_VERIFY_MODE="none"
+
+Valid values: https://ruby-doc.org/stdlib-2.5.1/libdoc/openssl/rdoc/OpenSSL/SSL.html
+- CLIENT_ONCE
+- FAIL_IF_NO_PEER_CERT
+- NONE
+- PEER
 
 ##### BOOTSTRAP_EMAIL_GW_HOSTS="0.0.0.0"
 
