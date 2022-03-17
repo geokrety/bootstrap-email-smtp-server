@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
 
 gem 'mail'
-gem 'midi-smtp-server', '>=3.0.1'
+gem 'midi-smtp-server', '>=3.0.3'
 gem 'bootstrap-email', ">= 1.0.0.alpha"
