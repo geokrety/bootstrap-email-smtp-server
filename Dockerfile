@@ -1,10 +1,7 @@
-FROM ruby:3.0-alpine
+FROM ruby:3.1
 
 ENV BOOTSTRAP_EMAIL_GW_HOSTS="0.0.0.0" \
     BOOTSTRAP_EMAIL_GW_PORTS=25
-
-RUN apk --no-cache add \
-      alpine-sdk
 
 COPY ./src/ /app/
 WORKDIR /app
