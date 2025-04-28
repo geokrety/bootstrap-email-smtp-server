@@ -20,7 +20,7 @@ GEM
       net-imap
       net-pop
       net-smtp
-    midi-smtp-server (3.1.2)
+    midi-smtp-server (3.2.1)
     mini_mime (1.1.2)
     net-imap (0.3.7)
       date
