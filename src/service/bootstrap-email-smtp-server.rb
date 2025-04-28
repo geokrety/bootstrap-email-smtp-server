@@ -68,10 +68,10 @@ class BootstrapSmtpServer < MidiSmtpServer::Smtpd
       ctx[:message][:crlf]
   end
 
-    # event when headers are received while receiving message DATA
-  def on_message_data_headers_event(ctx)
-    ctx[:message][:data] << 'X-BootstrapSmtpServer: 1.0' << ctx[:message][:crlf]
-  end
+  # # event when headers are received while receiving message DATA
+  # def on_message_data_headers_event(ctx)
+  #   ctx[:message][:data] << 'X-BootstrapSmtpServer: 1.0' << ctx[:message][:crlf]
+  # end
 
 end
 
