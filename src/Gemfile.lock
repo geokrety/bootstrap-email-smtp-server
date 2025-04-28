@@ -31,7 +31,7 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
-    nokogiri (1.15.3-x86_64-linux)
+    nokogiri (1.17.2-x86_64-linux-musl)
       racc (~> 1.4)
     premailer (1.21.0)
       addressable
