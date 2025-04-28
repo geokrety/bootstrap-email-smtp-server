@@ -57,16 +57,16 @@ class BootstrapSmtpServer < MidiSmtpServer::Smtpd
     end
   end
 
-  # event when beginning with message DATA
-  def on_message_data_start_event(ctx)
-    ctx[:message][:data] <<
-      "Received: " <<
-      "from #{ctx[:server][:remote_host]} (#{ctx[:server][:remote_ip]}) " <<
-      "by #{ctx[:server][:local_host]} (#{ctx[:server][:local_ip]}) " <<
-      "with BootstrapSmtpServer Server; " <<
-      Time.now.strftime("%a, %d %b %Y %H:%M:%S %z") <<
-      ctx[:message][:crlf]
-  end
+  # # event when beginning with message DATA
+  # def on_message_data_start_event(ctx)
+  #   ctx[:message][:data] <<
+  #     "Received: " <<
+  #     "from #{ctx[:server][:remote_host]} (#{ctx[:server][:remote_ip]}) " <<
+  #     "by #{ctx[:server][:local_host]} (#{ctx[:server][:local_ip]}) " <<
+  #     "with BootstrapSmtpServer Server; " <<
+  #     Time.now.strftime("%a, %d %b %Y %H:%M:%S %z") <<
+  #     ctx[:message][:crlf]
+  # end
 
   # # event when headers are received while receiving message DATA
   # def on_message_data_headers_event(ctx)
